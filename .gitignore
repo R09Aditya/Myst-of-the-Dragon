@@ -1,17 +1,14 @@
+# Unity generated folders
 [Ll]ibrary/
 [Tt]emp/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Pp]ackages/
-UserSettings/
+[Bb]uild*/
 MemoryCaptures/
+Logs/
 
-# OS files
-.DS_Store
-Thumbs.db
+# User-specific settings
+UserSettings/
 
-# Visual Studio
+# Visual Studio / Rider / MonoDevelop
 .vs/
 *.csproj
 *.unityproj
@@ -20,3 +17,7 @@ Thumbs.db
 *.tmp
 *.user
 *.userprefs
+
+# OS-specific
+.DS_Store
+Thumbs.db
