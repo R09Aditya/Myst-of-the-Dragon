@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
         {
             var found = GameObject.FindGameObjectWithTag("Player");
             if (found != null) player = found.transform;
-            else Debug.LogWarning("CameraController: Player not assigned and no GameObject with tag 'Player' found. Assign player in inspector.");
         }
 
         fixedY = transform.position.y;
