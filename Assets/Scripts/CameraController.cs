@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     public Vector3 followOffset = new Vector3(0f, 0f, -10f);
     public float followSmoothTime = 0.15f;
     public bool smoothTransition = true;
-   public float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     public bool stayFixedAfterTrigger = false;
     private Vector3 velocity = Vector3.zero;
     private bool isFixed = false;
@@ -26,7 +26,11 @@ public class CameraController : MonoBehaviour
 
         fixedY = transform.position.y;
 
-        transform.position = new Vector3(Mathf.Max(transform.position.x, 0f), fixedY, (player != null ? followOffset.z : fixedPosition.z));
+        transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, 0f, 65.5f), 
+            fixedY, 
+            (player != null ? followOffset.z : fixedPosition.z)
+        );
     }
 
     private void LateUpdate()
@@ -48,7 +52,7 @@ public class CameraController : MonoBehaviour
     {
         Vector3 target = new Vector3(fixedPosition.x, fixedY, fixedPosition.z);
 
-        target.x = Mathf.Max(target.x, 0f);
+        target.x = Mathf.Clamp(target.x, 0f, 65.5f);
 
         if (smoothTransition)
             transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * moveSpeed);
@@ -60,7 +64,7 @@ public class CameraController : MonoBehaviour
     {
         Vector3 target = new Vector3(player.position.x + followOffset.x, fixedY, followOffset.z);
 
-        target.x = Mathf.Max(target.x, 0f);
+        target.x = Mathf.Clamp(target.x, 0f, 65.5f);
 
         if (smoothTransition)
             transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, followSmoothTime);
